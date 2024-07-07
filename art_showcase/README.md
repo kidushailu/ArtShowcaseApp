@@ -1,4 +1,4 @@
-# art_showcase
+# Art Portfolio Showcase App
 
 A new Flutter project.
 
