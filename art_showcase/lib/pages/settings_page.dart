@@ -8,26 +8,28 @@ import '../helpers/bottom_bar.dart';
 import '../helpers/settings_list.dart';
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: ListView(
         children: [
-          SettingsList(
+          const SettingsList(
             page: AccountDetailsPage(),
             title: 'Account',
           ),
-          SettingsList(
+          const SettingsList(
               page: PrivacySecurityPage(), title: 'Privacy and Security'),
           SettingsList(page: AppearancePage(), title: 'Appearance'),
           SettingsList(page: HelpPage(), title: 'Help and Support'),
           SettingsList(page: AboutPage(), title: 'About'),
         ],
       ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }

@@ -16,31 +16,31 @@ class _AppearancePageState extends State<AppearancePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Appearance Settings'),
+        title: const Text('Appearance Settings'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Customize Appearance',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             SwitchListTile(
-              title: Text('Dark Mode'),
+              title: const Text('Dark Mode'),
               value: isDarkMode,
               onChanged: (bool value) {
                 themeProvider.toggleDarkMode(value);
               },
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Choose Primary Color',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Wrap(
               spacing: 8.0,
               children: [

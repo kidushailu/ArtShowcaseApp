@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'registration_page.dart';
+import 'pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3), () {});
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => RegistrationPage()),
+      MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
 

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import '../home_page.dart';
-import '../models/upload_page.dart';
-import '../models/settings_page.dart';
-import '../models/message_page.dart';
+import '../pages/home_page.dart';
+import '../pages/upload_page.dart';
+import '../pages/settings_page.dart';
+import '../pages/messages_page.dart';
 
 class BottomBar extends StatelessWidget {
+  const BottomBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(

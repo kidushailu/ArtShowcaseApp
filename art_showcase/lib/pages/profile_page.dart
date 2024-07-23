@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../helpers/bottom_bar.dart'; // Ensure the correct import path
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,13 +22,15 @@ class ProfilePage extends StatelessWidget {
 }
 
 class AccountDetailsPage extends StatelessWidget {
+  const AccountDetailsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Account Details'),
+        title: const Text('Account Details'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Account details content goes here.'),
       ),
     );
@@ -38,11 +42,13 @@ class UpdateAccountPage extends StatelessWidget {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
 
+  UpdateAccountPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Update Account Information'),
+        title: const Text('Update Account Information'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -52,7 +58,7 @@ class UpdateAccountPage extends StatelessWidget {
             children: [
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your name';
@@ -62,7 +68,7 @@ class UpdateAccountPage extends StatelessWidget {
               ),
               TextFormField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
@@ -70,18 +76,19 @@ class UpdateAccountPage extends StatelessWidget {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Save account information logic
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Account information updated')),
+                      const SnackBar(
+                          content: Text('Account information updated')),
                     );
                     Navigator.pop(context);
                   }
                 },
-                child: Text('Save'),
+                child: const Text('Save'),
               ),
             ],
           ),
