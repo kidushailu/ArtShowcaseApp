@@ -5,7 +5,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About SpendWell'),
+        title: const Text('About'),
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
@@ -14,44 +14,39 @@ class AboutPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'About SpendWell',
+                'About ArtConnect',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.0),
               Text(
-                'SpendWell is a comprehensive expense tracking application designed to help you manage your finances effectively. '
-                'With SpendWell, you can effortlessly record your expenses, set budgets, and create financial goals to ensure you stay on top of your financial health.',
+                'ArtConnect is a community-driven platform designed to connect artists and art enthusiasts from around the world. Our mission is to provide a space where creativity thrives, and artists can showcase their work, connect with other artists, and find inspiration.',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.0),
               Text(
-                'Key Features:',
+                'Key Features',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 8.0),
               Text(
-                '• Add and categorize expenses with ease.\n'
-                '• Set and monitor budgets to control your spending.\n'
-                '• Create financial goals and track your progress.\n'
-                '• Gain insights into your spending habits with detailed summaries.\n'
-                '• Customize your profile and app settings to suit your preferences.',
+                '• Showcase your artwork: Upload and share your art with the community.\n'
+                '• Discover new artists: Explore artwork from artists around the globe.\n'
+                '• Connect with others: Follow your favorite artists and interact with their work.\n'
+                '• Personalized feed: Get updates and recommendations based on your interests.',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.0),
               Text(
-                'Importance of SpendWell:',
+                'Contact Us',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 8.0),
               Text(
-                'Managing finances is crucial for achieving financial stability and achieving your long-term goals. SpendWell empowers you to take control of your money by providing a clear and organized view of your financial activities. '
-                'By using SpendWell, you can identify areas where you can save money, avoid unnecessary expenses, and make informed financial decisions.',
+                'If you have any questions, feedback, or need assistance, feel free to reach out to us:\n\n'
+                'Email: support@artconnectapp.com\n'
+                'Phone: +1 234 567 890\n'
+                'Address: 123 ArtConnect St, Creativity City, Artland 45678',
                 style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Start using SpendWell today and take the first step towards financial freedom!',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ],
           ),

@@ -5,7 +5,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Help and Support'),
+        title: const Text('Help & Support'),
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
@@ -14,55 +14,51 @@ class HelpPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Help and Support',
+                'Help & Support',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.0),
               Text(
-                'Welcome to SpendWell Help and Support. Here you can find answers to common questions and get assistance with using the app.',
+                'If you need any help or support with ArtConnect, you\'re in the right place! Below, you\'ll find various ways to get the assistance you need.',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.0),
               Text(
-                'Frequently Asked Questions:',
+                'Frequently Asked Questions',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 8.0),
               Text(
-                'Q: How do I add an expense?\n'
-                'A: To add an expense, go to the dashboard and tap on the "Add Expense" button. Fill in the details and save your expense.',
+                'Q: How do I upload my artwork?\n'
+                'A: To upload your artwork, go to the Home page and click on the "Upload Picture" button. Select the image from your gallery and add a title and description.\n',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 16),
               Text(
-                'Q: How do I set a budget?\n'
-                'A: To set a budget, go to the dashboard and tap on the "Budget" button. Enter your income, expenses, and savings, then set your spending limit.',
+                'Q: How do I edit my profile?\n'
+                'A: To edit your profile, go to the Profile page and click on the edit icon. You can change your name, email, contact number, and profile picture.\n',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.0),
               Text(
-                'Q: How do I create a financial goal?\n'
-                'A: To create a goal, go to the dashboard and tap on the "Goal" button. Fill in the required fields and set your goal.',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Need more help?',
+                'Contact Us',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 8.0),
               Text(
-                'If you need further assistance, feel free to reach out to our support team:',
+                'If you have any questions, issues, or need further assistance, feel free to reach out to us:\n\n'
+                'Email: support@artconnectapp.com\n'
+                'Phone: +1 234 567 890\n'
+                'Address: 123 ArtConnect St, Creativity City, Artland 45678',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 16.0),
               Text(
-                'Email: support@spendwellapp.com\nPhone: +1 800 123 4567\nWebsite: www.spendwellapp.com/support',
-                style: TextStyle(fontSize: 16),
+                'Feedback',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 8.0),
               Text(
-                'We are here to help you make the most out of SpendWell. Thank you for using our app!',
+                'We value your feedback and suggestions. Please let us know how we can improve ArtConnect to better serve you.',
                 style: TextStyle(fontSize: 16),
               ),
             ],

@@ -31,7 +31,7 @@ class PrivacySecurityPage extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                'We collect personal information that you provide to us directly, such as when you create an account, add expenses, set budgets, and create goals. This information is used to personalize your experience and provide you with the best service possible.',
+                'We collect personal information that you provide to us directly, such as when you create an account, upload artworks, send messages, and provide feedback. This information is used to personalize your experience and provide you with the best service possible.',
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 16),
@@ -61,7 +61,7 @@ class PrivacySecurityPage extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                'By using our app, you consent to our privacy policy. If you have any questions about this policy, please contact us at support@spendwellapp.com.',
+                'By using our app, you consent to our privacy policy. If you have any questions about this policy, please contact us at support@artconnectapp.com.',
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 16),
@@ -81,7 +81,7 @@ class PrivacySecurityPage extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                'If you have any questions or concerns about our privacy and security policies, please contact us at:\nEmail: support@spendwellapp.com\nPhone: +1 800 123 4567',
+                'If you have any questions or concerns about our privacy and security policies, please contact us at:\nEmail: support@artconnectapp.com\nPhone: +1 234 567 890',
                 style: TextStyle(fontSize: 16),
               ),
             ],
