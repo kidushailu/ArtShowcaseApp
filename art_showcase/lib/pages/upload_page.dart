@@ -1,7 +1,11 @@
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../helpers/bottom_bar.dart'; // Ensure the correct import path
-//import 'package:image_picker/image_picker.dart';
-//import 'package:firestore/firestore.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'home_page.dart';
+import '../helpers/bottom_bar.dart';
 
 class UploadPage extends StatefulWidget {
   @override
@@ -22,6 +26,12 @@ class _UploadPageState extends State<UploadPage> {
     'Drawing'
   ];
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final CollectionReference _reference =
+      FirebaseFirestore.instance.collection('artworks');
+
+  String imageUrl = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +40,8 @@ class _UploadPageState extends State<UploadPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formkey,
-          child: Column(
+        child: ListView(key: _formkey, children: [
+          Column(
             children: [
               TextFormField(
                 controller: _controllerTitle,
@@ -66,7 +75,7 @@ class _UploadPageState extends State<UploadPage> {
               ),
               DropdownButtonFormField<String>(
                   value: _selectedTag,
-                  hint: Text("Select a tag"),
+                  hint: const Text("Select a tag"),
                   items: _tags.map((tag) {
                     return DropdownMenuItem<String>(
                       value: tag,
@@ -84,13 +93,68 @@ class _UploadPageState extends State<UploadPage> {
                     }
                     return null;
                   }),
-              const IconButton(onPressed: null, icon: Icon(Icons.upload_file)),
-              const ElevatedButton(onPressed: null, child: Text('Post'))
+              imageUrl.isEmpty
+                  ? IconButton(
+                      onPressed: () async {
+                        ImagePicker imagePicker = ImagePicker();
+                        XFile? file = await imagePicker.pickImage(
+                            source: ImageSource.gallery);
+
+                        if (file == null) return;
+
+                        String uniqueFileName =
+                            DateTime.now().millisecondsSinceEpoch.toString();
+
+                        Reference referenceRoot =
+                            FirebaseStorage.instance.ref();
+                        Reference referenceDirImages =
+                            referenceRoot.child('images');
+
+                        Reference referenceImageToUpload =
+                            referenceDirImages.child(uniqueFileName);
+
+                        try {
+                          await referenceImageToUpload.putFile(File(file.path));
+
+                          imageUrl =
+                              await referenceImageToUpload.getDownloadURL();
+                        } catch (e) {}
+                      },
+                      icon: const Icon(Icons.upload_file))
+                  : Container(
+                      child: Image.network(imageUrl),
+                    ),
+              ElevatedButton(
+                  onPressed: () async {
+                    if (imageUrl.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Please upload an image")));
+                      return;
+                    }
+
+                    // Create a map of data
+                    Map<String, dynamic> dataToSend = {
+                      'title': _controllerTitle.text,
+                      'artist': _controllerArtist.text,
+                      'description': _controllerDescription.text,
+                      'tag': _selectedTag,
+                      'timestamp': Timestamp.now(),
+                      'image': imageUrl,
+                      'uid': _auth.currentUser!.uid
+                    };
+
+                    // Add new item
+                    _reference.add(dataToSend);
+
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                  child: const Text('Post'))
             ],
           ),
-        ),
+        ]),
       ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }
