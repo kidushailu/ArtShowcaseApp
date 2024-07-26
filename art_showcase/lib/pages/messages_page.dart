@@ -50,19 +50,25 @@ class _MessagePageState extends State<MessagePage> {
 
     //display all users except current user
     if (_auth.currentUser!.email != data['email']) {
-      return ListTile(
-        title: Text(data['username']),
-        onTap: () {
-          // pass the clicked user's uid to the chat page
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ChatPage(
-                        receiverUsername: data['username'],
-                        receiverUserID: data['uid'],
-                      )));
-        },
-      );
+      return Column(children: [
+        ListTile(
+          title: Text(data['username']),
+          trailing: const Icon(Icons.arrow_right),
+          onTap: () {
+            // pass the clicked user's uid to the chat page
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ChatPage(
+                          receiverUsername: data['username'],
+                          receiverUserID: data['uid'],
+                        )));
+          },
+        ),
+        const Divider(
+          height: 3,
+        ),
+      ]);
     } else {
       return Container();
     }
