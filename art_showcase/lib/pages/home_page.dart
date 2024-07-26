@@ -1,3 +1,4 @@
+import '../helpers/image_list.dart';
 import 'upload_page.dart';
 import 'messages_page.dart';
 import '../helpers/auth_service.dart';
@@ -7,6 +8,8 @@ import 'settings_page.dart';
 import 'profile_page.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   void _logout(BuildContext context) async {
     final AuthService authService = AuthService();
 
@@ -20,18 +23,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        automaticallyImplyLeading: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () => _logout(context),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
+        appBar: AppBar(
+          title: const Text('ArtConnect'),
+          automaticallyImplyLeading: true,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () => _logout(context),
+            ),
+          ],
+        ),
+        body: Column(children: [
           Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -105,34 +107,24 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 8),
                   ])),
           Expanded(
-              child: Stack(alignment: Alignment.center, children: [
-            Container(
-              decoration: const BoxDecoration(
-                  color: Color.fromRGBO(238, 238, 238, 1),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30))),
-              child: const Center(
-                child: Text('Art Showcase will be displayed here'),
-              ),
-            ),
-            Positioned(
-                bottom: 20,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(16),
-                        shape: const CircleBorder()),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => UploadPage()),
-                      );
-                    },
-                    child: const Icon(Icons.add_box_outlined)))
-          ]))
-        ],
-      ),
-    );
+            child: Stack(alignment: Alignment.bottomCenter, children: [
+              ImageList(),
+              Positioned(
+                  bottom: 20,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(16),
+                          shape: const CircleBorder()),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => UploadPage()),
+                        );
+                      },
+                      child: const Icon(Icons.add_box_outlined)))
+            ]),
+          )
+        ]));
     // bottomNavigationBar: BottomBar(),
   }
 }

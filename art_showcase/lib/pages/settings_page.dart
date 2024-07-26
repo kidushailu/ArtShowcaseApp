@@ -19,7 +19,7 @@ class SettingsPage extends StatelessWidget {
       body: ListView(
         children: [
           const SettingsList(
-            page: AccountDetailsPage(),
+            page: ProfilePage(),
             title: 'Account',
           ),
           const SettingsList(
