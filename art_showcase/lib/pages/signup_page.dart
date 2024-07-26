@@ -1,4 +1,6 @@
 import 'package:art_showcase/helpers/auth_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -19,6 +21,19 @@ class _SignUpPageState extends State<SignUpPage> {
     try {
       await authService.signUpWithEmailandPassword(_emailController.text,
           _passwordController.text, _usernameController.text);
+
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(_emailController.text)
+          .set({
+        'fname': _firstNameController.text,
+        'lname': _lastNameController.text,
+        'username': _usernameController.text,
+        'email': _emailController.text,
+        'uid': FirebaseAuth.instance.currentUser!.uid,
+        'bio': 'Empty bio...',
+        'pfp': ''
+      });
 
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Account created successfully'),
