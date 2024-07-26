@@ -16,7 +16,7 @@ ArtConnect is a mobile application designed to empower artists by providing a pl
 
 
 ### Presentation and Demo
-[Youtube](https://youtu.be/BRABVYuX-lc?si=gGonOTqvWXKMAMAn)
+[Youtube](https://youtu.be/Np6YOI1GpVE)
 
 ## Installation
 
