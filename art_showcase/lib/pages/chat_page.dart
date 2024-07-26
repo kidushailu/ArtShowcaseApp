@@ -38,7 +38,7 @@ class _ChatPageState extends State<ChatPage> {
           title: Text(widget.receiverUsername),
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.only(left: 8.0, right: 8, top: 50),
           child: Column(
             children: [
               // messages
@@ -96,9 +96,18 @@ class _ChatPageState extends State<ChatPage> {
             : MainAxisAlignment.start,
         children: [
           (data['senderId'] == _auth.currentUser!.uid)
-              ? const Text('You')
-              : Text(widget.receiverUsername),
-          ChatBubble(message: data['message']),
+              ? Text(
+                  'You',
+                  style: TextStyle(color: Colors.grey[500]),
+                )
+              : Text(
+                  widget.receiverUsername,
+                  style: TextStyle(color: Colors.grey[500]),
+                ),
+          ChatBubble(
+            message: data['message'],
+            uid: data['senderId'],
+          ),
           const SizedBox(
             height: 5,
           )
