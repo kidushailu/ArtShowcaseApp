@@ -30,7 +30,7 @@ ArtConnect is a mobile application designed to empower artists by providing a pl
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/kidushailu/ExpenseTrackerApp.git
+   https://github.com/kidushailu/ArtShowcaseApp.git
 2. Open project in VS Code.
 3. Install Flutter and Dart extensions.
 4. Create emulator on Android Studio.
