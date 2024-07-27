@@ -5,7 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ImageList extends StatelessWidget {
-  ImageList({super.key});
+  final String? filter;
+  ImageList({super.key, this.filter});
 
   final Stream<QuerySnapshot> _stream = FirebaseFirestore.instance
       .collection('artworks')
@@ -20,7 +21,15 @@ class ImageList extends StatelessWidget {
             color: Theme.of(context).primaryColorLight,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30))),
-        child: StreamBuilder(stream: _stream, builder: _displayImages));
+        child: StreamBuilder(
+            stream: (filter != null)
+                ? FirebaseFirestore.instance
+                    .collection('artworks')
+                    .where('tag', isEqualTo: filter)
+                    .orderBy('timestamp', descending: true)
+                    .snapshots()
+                : _stream,
+            builder: _displayImages));
   }
 
   Widget _displayImages(BuildContext context, AsyncSnapshot snapshot) {

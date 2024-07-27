@@ -7,9 +7,14 @@ import 'login_page.dart';
 import 'settings_page.dart';
 import 'profile_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   void _logout(BuildContext context) async {
     final AuthService authService = AuthService();
 
@@ -18,6 +23,20 @@ class HomePage extends StatelessWidget {
       context,
       MaterialPageRoute(builder: (context) => LoginPage()),
     );
+  }
+
+  String? filter;
+
+  @override
+  void initState() {
+    super.initState();
+    filterImages(filter);
+  }
+
+  void filterImages(String? newFilter) {
+    setState(() {
+      filter = newFilter;
+    });
   }
 
   @override
@@ -89,26 +108,39 @@ class HomePage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           children: [
                             ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  filterImages('Painting');
+                                },
                                 child: const Text('Painting')),
                             ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  filterImages('Photography');
+                                },
                                 child: const Text('Photography')),
                             ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  filterImages('Sculpture');
+                                },
                                 child: const Text('Sculpture')),
                             ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  filterImages('Digital Art');
+                                },
                                 child: const Text('Digital Art')),
                             ElevatedButton(
-                                onPressed: () {}, child: const Text('Drawing')),
+                                onPressed: () {
+                                  filterImages('Drawing');
+                                },
+                                child: const Text('Drawing')),
                           ],
                         )),
                     const SizedBox(height: 8),
                   ])),
           Expanded(
             child: Stack(alignment: Alignment.bottomCenter, children: [
-              ImageList(),
+              ImageList(
+                filter: filter,
+              ),
               Positioned(
                   bottom: 20,
                   child: ElevatedButton(
