@@ -11,7 +11,10 @@ class UserPosts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('artworks').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('artworks')
+            .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Map> posts =
@@ -27,24 +30,24 @@ class UserPosts extends StatelessWidget {
                   // get the image at this index
                   Map thisImage = posts[index];
                   // return the widget for the list items
-                  if (thisImage['uid'] ==
-                      FirebaseAuth.instance.currentUser!.uid) {
-                    return GestureDetector(
-                      child: thisImage.containsKey('image')
-                          ? Image.network('${thisImage['image']}')
-                          : Container(),
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ArtworkDetailPage(
-                              imageUrl: thisImage['image'],
-                              postId: postId.toString()),
-                        ));
-                      },
-                    );
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                  // if (thisImage['uid'] ==
+                  //     FirebaseAuth.instance.currentUser!.uid) {
+                  return GestureDetector(
+                    child: thisImage.containsKey('image')
+                        ? Image.network('${thisImage['image']}')
+                        : Container(),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ArtworkDetailPage(
+                            imageUrl: thisImage['image'],
+                            postId: postId.toString()),
+                      ));
+                    },
                   );
+                  //   }
+                  //   return const Center(
+                  //     child: CircularProgressIndicator(),
+                  //   );
                 });
           }
           if (snapshot.hasError) {
