@@ -29,9 +29,6 @@ class UserPosts extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   // get the image at this index
                   Map thisImage = posts[index];
-                  // return the widget for the list items
-                  // if (thisImage['uid'] ==
-                  //     FirebaseAuth.instance.currentUser!.uid) {
                   return GestureDetector(
                     child: thisImage.containsKey('image')
                         ? Image.network('${thisImage['image']}')
@@ -44,10 +41,6 @@ class UserPosts extends StatelessWidget {
                       ));
                     },
                   );
-                  //   }
-                  //   return const Center(
-                  //     child: CircularProgressIndicator(),
-                  //   );
                 });
           }
           if (snapshot.hasError) {
